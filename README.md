@@ -1,8 +1,2 @@
 # Plane
-Для удобной работы с docker-container создан скрипт _setup.sh_.
-
-После запуска скрипта можно выполнить одно из действий. Наиболее востребованные действия:
-
-1. Start "--- запускает приложение через _docker-compose.yml_.
-2. Stop "--- остановить работу приложения.
-3. Restart "--- перезапустить приложение (контейнер).
+Для запуска docker-container выполните команду _docker-compose -f .\plane-app\docker-compose.yaml —env-file=.\plane-app\plane.env up -d —quiet-pull_.
