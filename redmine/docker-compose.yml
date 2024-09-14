@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  redmine:
+    image: redmine
+    restart: always
+    ports:
+      - 8020:3000
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_PASSWORD: JAy1YHRJ
+      REDMINE_SECRET_KEY_BASE: bcnjhbr12!348HerjGbcm2
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: JAy1YHRJ
+      MYSQL_DATABASE: redmine
