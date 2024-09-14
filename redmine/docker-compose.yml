@@ -9,15 +9,21 @@ services:
       - 8020:3000
     environment:
       REDMINE_RELATIVE_URL_ROOT: /plane
-      REDMINE_DB_MYSQL: db
+      REDMINE_DB_MARIADB: db
       REDMINE_DB_PASSWORD: example
       REDMINE_SECRET_KEY_BASE: supersecretkey
     volumes:
       - ./config.rb:/usr/src/redmine/config/environment.rb
+      - ./config.ru:/usr/src/redmine/config.ru
 
   db:
-    image: mysql:8.0
+    image: mariadb:11.2
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: redmine
+      - MARIADB_USER=redmine
+      - MARIADB_PASSWORD=example
+      - MARIADB_DATABASE=redmine
+      - MARIADB_RANDOM_ROOT_PASSWORD=1
+      - MARIADB_AUTO_UPGRADE=1
+    volumes:
+     - ./mariadb:/var/lib/mysql
