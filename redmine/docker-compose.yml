@@ -10,21 +10,22 @@ services:
     depends_on:
       - db
     environment:
-      REDMINE_DB_MARIADB: db
-      REDMINE_DB_PASSWORD: example
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_DATABASE: redmine
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: pakistan
+      REDMINE_RELATIVE_URL_ROOT: /plane
       REDMINE_SECRET_KEY_BASE: supersecretkey
     volumes:
       - ./config.rb:/usr/src/redmine/config/environment.rb
-      # - ./config.ru:/usr/src/redmine/config.ru
 
   db:
-    image: mariadb:11.2
+    container_name: mariadb-container
+    image: mariadb:latest
     restart: always
+    user: root
     environment:
-      - MARIADB_USER=redmine
-      - MARIADB_PASSWORD=example
-      - MARIADB_DATABASE=redmine
-      - MARIADB_RANDOM_ROOT_PASSWORD=1
-      - MARIADB_AUTO_UPGRADE=1
-    volumes:
-     - ./mariadb:/var/lib/mysql
+      MYSQL_DATABASE: redmine
+      MYSQL_USER: redmine
+      MYSQL_PASSWORD: pakistan
+      MYSQL_ROOT_PASSWORD: pakistan

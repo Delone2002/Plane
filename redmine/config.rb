@@ -15,7 +15,6 @@ RedmineApp::Application.routes.default_scope = "/plane"
 Rails.application.initialize!
 Redmine::Utils::relative_url_root = "/plane" 
 
-ActionController::Base.relative_url_root = "/plane"
-
+ActionController::Base.relative_url_root = "/plane" 
 # Initialize the Rails application
 #Rails.application.initialize!
